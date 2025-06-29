@@ -2,7 +2,7 @@ body {
   background: linear-gradient(to bottom right, #e1e8f5, #dcd0ff);
   font-family: Arial, sans-serif;
   display: flex;
-  flex-direction: column; /* Add this line */
+  flex-direction: column; 
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -56,7 +56,7 @@ body {
 
 .condition {
   font-size: 18px;
-  color: #ccc;
+  color: #a08181;
 }
 
 .hourly-forecast {
