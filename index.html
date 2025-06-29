@@ -8,14 +8,16 @@
 </head>
 <body>
     <header>
+      
          <div class="weather-app">
-    <div class="search-bar">
-      <input type="text" id="city-input" placeholder="Enter a city name">
-      <button id="search-btn">🔍</button>
+    <form id="search-form" class="search-bar">
+        <input type="text" id="city-input" placeholder="Enter a city name" required />
+        <button type="submit" id="search-btn">🔍</button>
+      </form>
     </div>
     </header>
     <main>
-    <h1> Nairobi</h1>
+    <h1 class="weather-app-city" id="city"> Nairobi</h1>
       <div class="weather-info">
       <div class="weather-icon">🌤️</div>
       <div class="temperature">20°C</div>
@@ -43,6 +45,6 @@
             >hosted on Netlify</a
           >
         </p>
-        <script src="src/index.js"></script>
+        <script src="src\index.js"></script>
 </body>
 </html>
