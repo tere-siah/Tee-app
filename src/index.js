@@ -21,31 +21,25 @@ function handleSearchSubmit(event) {
     cityElement.innerHTML = cityInput.value;
     searchCity(cityInput.value);
 }
-let searchFormElement = document.getElementById("search-form");
-searchFormElement.addEventListener("submit", handleSearchSubmit);
 function displayForecast(response) {
-  let forecastElement = document.getElementById("forecast");
-  forecastElement.innerHTML = ""; 
+let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+let forecastHtml = ""; 
 
-  let hourlyForecast = response.data.daily[0].hourly;
-
-  hourlyForecast.slice(0, 6).forEach(function (hour) {
-    let time = formatHour(hour.time); // helper function
-    let icon = hour.condition.icon_url;
-    let temperature = Math.round(hour.temperature);
-
-    forecastElement.innerHTML += `
-      <div class="forecast-hour">
-        <div class="forecast-time">${time}</div>
-        <img src="${icon}" alt="" class="forecast-icon">
-        <div class="forecast-temp">${temperature}°C</div>
-      </div>
+  days.forEach(function (day) {
+    forecastHtml = 
+    forecastHtml + 
+    ` <div class="weather-forecast-day">
+        <div class="weather-forecast-date">${day}</div>
+         <div class="weather-forecast-icon">🌥</div>
+         <div class="weather-forecast-temperatures"><strong>35°</strong> 9°</div>
+       </div>
     `;
   });
-}
 
-function formatHour(timestamp) {
-  let date = new Date(timestamp * 1000); // API returns seconds
-  let hours = date.getHours();
-  return `${hours}:00`;
+  let forecastElement = document.getElementById("forecast");
+forecastElement.innerHTML = forecastHtml;
 }
+let searchFormElement = document.getElementById("search-form");
+searchFormElement.addEventListener("submit", handleSearchSubmit);
+
+displayForecast();
