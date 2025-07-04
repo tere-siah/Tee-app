@@ -5,8 +5,9 @@ temperatureElement.innerHTML = Math.round(response.data.temperature.current) + "
 let conditionElement = document.getElementById("weather-condition");
 conditionElement.innerHTML = response.data.condition.description;
 let iconElement = document.getElementById("icon");
-
 iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-icon"/>`  
+
+getForecast(response.data.city);
 }
 function searchCity(city) {
     let apiKey = "a2de7ef8070coa3bdc8506t84be4831b";
@@ -20,6 +21,12 @@ function handleSearchSubmit(event) {
     let cityElement = document.getElementById("city");
     cityElement.innerHTML = cityInput.value;
     searchCity(cityInput.value);
+}
+function getForecast(city) {
+    let apiKey = "a2de7ef8070coa3bdc8506t84be4831b";
+     let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(displayForecast);
+
 }
 function displayForecast(response) {
 let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
