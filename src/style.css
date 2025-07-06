@@ -51,7 +51,7 @@ body {
 }
 
 .weather-app-icon {
-  width: 88px;
+  width: 100%;
   height: 88px;
 }
 #forecast{
@@ -67,7 +67,7 @@ margin-top: 30px;
   align-items: center;
 }
 .weather-forecast-icon{
-width: 100%;
+width: 88px;
 }
 
 .weather-forecast-date {
