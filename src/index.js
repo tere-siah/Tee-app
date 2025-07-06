@@ -5,7 +5,7 @@ temperatureElement.innerHTML = Math.round(response.data.temperature.current) + "
 let conditionElement = document.getElementById("weather-condition");
 conditionElement.innerHTML = response.data.condition.description;
 let iconElement = document.getElementById("icon");
-iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-icon"/>`  
+iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon"/>`  
 
 getForecast(response.data.city);
 }
@@ -29,16 +29,15 @@ function getForecast(city) {
 
 }
 function displayForecast(response) {
-let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
 let forecastHtml = ""; 
 
-  days.forEach(function (day) {
+  response.data.daily.forEach(function (day) {
     forecastHtml = 
     forecastHtml + 
     ` <div class="weather-forecast-day">
         <div class="weather-forecast-date">${day}</div>
          <div class="weather-forecast-icon">🌥</div>
-         <div class="weather-forecast-temperatures"><strong>35°</strong> 9°</div>
+         <div class="weather-forecast-temperatures"><strong>${Math.round(day.temperature.maximum)}</strong> ${Math.round(day.temperature.minimum)}</div>
        </div>
     `;
   });

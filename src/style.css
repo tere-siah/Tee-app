@@ -46,8 +46,9 @@ body {
   margin-bottom: 20px;
 }
 
-.weather-icon {
-  font-size: 48px;
+.weather-app-icon {
+  width: 88px;
+  height: 44px;
 }
 #forecast{
 display: flex;
