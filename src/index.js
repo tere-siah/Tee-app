@@ -5,15 +5,18 @@ temperatureElement.innerHTML = Math.round(response.data.temperature.current) + "
 let conditionElement = document.getElementById("weather-condition");
 conditionElement.innerHTML = response.data.condition.description;
 let iconElement = document.getElementById("icon");
-iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon"/>`  
+let iconUrl = response.data.condition.icon_url.replace("http://", "https://");
+iconElement.innerHTML = `<img src="${iconUrl}" class="weather-app-icon" />`;
 
-getForecast(response.data.city);
+ 
+
+
 }
 function searchCity(city) {
     let apiKey = "a2de7ef8070coa3bdc8506t84be4831b";
      let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
     axios.get(apiUrl).then(refreshWeather);
-
+    getForecast(city);
 }
 function handleSearchSubmit(event) {
     event.preventDefault(); 
@@ -48,4 +51,5 @@ forecastElement.innerHTML = forecastHtml;
 let searchFormElement = document.getElementById("search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
-displayForecast();
+searchCity("Nairobi");
+
