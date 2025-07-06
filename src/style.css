@@ -67,7 +67,7 @@ margin-top: 30px;
   align-items: center;
 }
 .weather-forecast-icon{
-font-size: 30px;
+width: 100%;
 }
 
 .weather-forecast-date {
