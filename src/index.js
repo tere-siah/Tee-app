@@ -7,10 +7,14 @@ conditionElement.innerHTML = response.data.condition.description;
 let iconElement = document.getElementById("icon");
 let iconUrl = response.data.condition.icon_url.replace("http://", "https://");
 iconElement.innerHTML = `<img src="${iconUrl}" class="weather-app-icon" />`;
-
- 
-
-
+let humidityElement = document.getElementById("weather-humidity");
+ humidityElement.innerHTML = `Humidity: <strong>${response.data.temperature.humidity}%</strong>`;
+let windSpeedElement = document.getElementById("weather-wind-speed");
+ windSpeedElement.innerHTML = `Wind Speed: <strong>${Math.round(response.data.wind.speed)} km/h</strong>`;
+let timeElement = document.getElementById("time");
+let date = new Date(response.data.time * 1000);
+timeElement.innerHTML = formatDate(date);
+   
 }
 function searchCity(city) {
     let apiKey = "a2de7ef8070coa3bdc8506t84be4831b";
@@ -26,9 +30,12 @@ function handleSearchSubmit(event) {
     searchCity(cityInput.value);
 }
 function formatDay(event) {
+  let minutes = date.getMinutes();
+  let hours = date.getHours();
   let date = new Date(event * 1000);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
+if (minutes < 10) {
+minutes = `0${minutes}`;}
   return days[date.getDay()];
 }
 function getForecast(city) {
